@@ -1,39 +1,18 @@
 require 'rails_helper'
 
-RSpec.describe "V1::Ideas", type: :request do
-  describe "GET /index" do
-    it "returns http success" do
-      get "/v1/ideas/index"
-      expect(response).to have_http_status(:success)
-    end
+RSpec.describe 'V1::Ideas', type: :request do
+  describe 'GET #index' do
   end
 
-  describe "GET /show" do
-    it "returns http success" do
-      get "/v1/ideas/show"
-      expect(response).to have_http_status(:success)
-    end
+  describe 'GET #show' do
   end
 
-  describe "GET /create" do
-    it "returns http success" do
-      get "/v1/ideas/create"
-      expect(response).to have_http_status(:success)
-    end
+  describe 'POST #create' do
   end
 
-  describe "GET /update" do
-    it "returns http success" do
-      get "/v1/ideas/update"
-      expect(response).to have_http_status(:success)
-    end
+  describe 'PATCH #update' do
   end
 
-  describe "GET /destroy" do
-    it "returns http success" do
-      get "/v1/ideas/destroy"
-      expect(response).to have_http_status(:success)
-    end
+  describe 'DELETE #destroy' do
   end
-
 end
