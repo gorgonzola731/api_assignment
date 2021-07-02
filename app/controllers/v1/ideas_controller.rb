@@ -1,5 +1,8 @@
 class V1::IdeasController < ApplicationController
-  def index; end
+  def index;
+    ideas = Idea.all
+    render json: ideas
+  end
 
   def show; end
 
