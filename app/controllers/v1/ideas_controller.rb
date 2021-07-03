@@ -1,14 +1,24 @@
 class V1::IdeasController < ApplicationController
   def index
-    ideas = Idea.all
-    render json: ideas
+    @ideas = Idea.all
+
+     render json: @ideas
   end
 
-  def show; end
+  def create
+     @idea = Idea.new(idea_params)
 
-  def create; end
+    if @idea.save
+      render json: @idea, status: :created, location: @idea
+    else
+      render json: @idea.errors, status: :unprocessable_entity
+    end
+  end
 
-  def update; end
 
-  def destroy; end
+  private
+
+  def idea_params
+    params.require(:idea).permit(:catagory_id,:body)
+  end
 end
