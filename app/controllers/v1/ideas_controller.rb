@@ -1,7 +1,6 @@
 class V1::IdeasController < ApplicationController
   def index
-    @ideas = Idea.all
-
+    @ideas = Idea.includes([:category])
      render json: @ideas
   end
 
@@ -19,6 +18,6 @@ class V1::IdeasController < ApplicationController
   private
 
   def idea_params
-    params.require(:idea).permit(:catagory_id,:body)
+    params.require(:idea).permit(:catagory_id, :body)
   end
 end

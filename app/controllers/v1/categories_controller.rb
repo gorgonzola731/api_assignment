@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    @category = Category.new(idea_params)
+    @category = Category.new(category_params)
 
     if @category.save
       render json: @category, status: :created, location: @category
