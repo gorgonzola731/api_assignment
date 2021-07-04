@@ -1,8 +1,13 @@
 class V1::IdeasController < ApplicationController
   def index
-    @ideas = Idea.includes([:category])
+    if params[:category_id]
+      @category = Category.find(params[:category_id])
 
-    category = params[:category] unless params[:category].blank?
+      @ideas = @category.ideas.order(created_at: :desc).all
+    else
+      @ideas = Idea.order(created_at: :desc).all
+    end
+    
     render json: { data: @ideas }
   end
 
