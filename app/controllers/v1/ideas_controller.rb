@@ -1,11 +1,13 @@
 class V1::IdeasController < ApplicationController
   def index
     @ideas = Idea.includes([:category])
-     render json: @ideas
+
+    category = params[:category] unless params[:category].blank?
+    render json: { data: @ideas }
   end
 
   def create
-     @idea = Idea.new(idea_params)
+    @idea = Idea.new(idea_params)
 
     if @idea.save
       render json: @idea, status: :created, location: @idea
@@ -13,7 +15,6 @@ class V1::IdeasController < ApplicationController
       render json: @idea.errors, status: :unprocessable_entity
     end
   end
-
 
   private
 
