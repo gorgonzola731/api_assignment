@@ -1,8 +1,8 @@
 class V1::IdeasController < ApplicationController
   def index
-    @ideas = if params[:category_id]
+    @ideas = if params[:category_name]
 
-               Category.joins(:ideas).select('ideas.id, name AS category, body').find(params[:category_id])
+               Category.joins(:ideas).select('ideas.id, name AS category, body').where(name: params[:category_name])
              else
                Category.joins(:ideas).select('ideas.id, name AS category, body')
              end
